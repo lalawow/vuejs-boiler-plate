@@ -1,0 +1,37 @@
+// $--color-white: #fff;
+// $--color-primary: #2f5943 !default;
+// $--color-primary-light-1: mix($--color-white, $--color-primary, 10%) !default;
+// $--color-primary-light-2: mix($--color-white, $--color-primary, 20%) !default;
+// $--color-primary-light-3: mix($--color-white, $--color-primary, 30%) !default;
+// $--color-primary-light-4: mix($--color-white, $--color-primary, 40%) !default;
+// $--color-primary-light-5: mix($--color-white, $--color-primary, 50%) !default;
+// $--color-primary-light-6: mix($--color-white, $--color-primary, 60%) !default;
+// $--color-primary-light-7: mix($--color-white, $--color-primary, 70%) !default;
+// $--color-primary-light-8: mix($--color-white, $--color-primary, 80%) !default;
+// $--color-primary-light-9: mix($--color-white, $--color-primary, 90%) !default;
+// $--color-success: #67c23a !default;
+// $--color-warning: #e6a23c !default;
+// $--color-danger: #f56c6c !default;
+// $--color-info: #909399 !default;
+// sidebar
+$menuText: $--color-primary-light-8;
+$menuActiveText: $--color-primary-light-8;
+$subMenuActiveText: #f4f4f5; //https://github.com/ElemeFE/element/issues/12951
+$menuBg: $--color-primary-light-2;
+$menuActiveBg: $--color-primary-light-1;
+$menuHover: $--color-primary-light-3;
+$subMenuBg: #1f2d3d;
+$subMenuHover: #001528;
+$sideBarWidth: 13.125rem;
+// the :export directive is the magic sauce for webpack
+// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
+:export {
+    menuText: $menuText;
+    menuActiveText: $menuActiveText;
+    subMenuActiveText: $subMenuActiveText;
+    menuBg: $menuBg;
+    menuHover: $menuHover;
+    subMenuBg: $subMenuBg;
+    subMenuHover: $subMenuHover;
+    sideBarWidth: $sideBarWidth;
+}

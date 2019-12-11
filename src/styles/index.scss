@@ -1,0 +1,128 @@
+@import "./mainColors.scss";
+@import "./variables.scss";
+@import "./mixin.scss";
+@import "./transition.scss";
+@import "./element-ui.scss";
+@import "./sidebar.scss";
+@import "./theme/index.css";
+@import "./iconfont.css";
+body {
+    height: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+label {
+    font-weight: 700;
+}
+
+html {
+    height: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+@media screen and (min-width:1250px) and (max-width:1450px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width:1080px) and (max-width:1250px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width:1080px) {
+    html {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width:900px) {
+    html {
+        font-size: 8px;
+    }
+}
+
+#app {
+    height: 100%;
+    color: #333333;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+a:focus,
+a:active {
+    outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+}
+
+div:focus {
+    outline: none;
+}
+
+.clearfix {
+    &:after {
+        visibility: hidden;
+        display: block;
+        font-size: 0;
+        content: " ";
+        clear: both;
+        height: 0;
+    }
+}
+
+// main-container global css
+.app-container {
+    padding: 1.25rem;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.center-container {
+    width: $--main-width;
+    padding: 1.875rem;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+}
+
+.flex-block {
+    display: flex;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.group-page {
+    flex-grow: 1;
+}
+
+.html-content {
+    p {
+        font-size: 1rem;
+        line-height: 2rem;
+        text-indent: 2em;
+        margin: 0;
+    }
+}

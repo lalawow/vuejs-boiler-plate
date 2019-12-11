@@ -1,0 +1,819 @@
+swagger: "2.0"
+info:
+  version: 0.1.0
+  title: keyan
+  license:
+    name: MIT
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /login:
+    post:
+      summary: user login
+      consumes:
+        - multipart/form-data
+      operationId: userLogin
+      tags:
+        - user
+      parameters:
+        - name: username
+          in: formData
+          description: phone number or email
+          required: true
+          type: string
+        - name: password
+          in: formData
+          description: password
+          required: true
+          type: string
+      responses:
+        "200":
+          description: A 200 reponse
+        default:
+          description: unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+  /register:
+    post:
+      summary: user register
+      consumes:
+        - multipart/form-data
+      operationId: userRegister
+      tags:
+        - user
+      parameters:
+        - name: type
+          in: formData
+          description: 个人 1 企业 2
+          required: true
+          type: number
+        - name: username
+          in: formData
+          description: username
+          required: true
+          type: string
+        - name: companyName
+          in: formData
+          description: 公司名
+          required: true
+          type: string
+        - name: phone
+          in: formData
+          description: phone number
+          required: true
+          type: string
+        - name: email
+          in: formData
+          description: email
+          required: true
+          type: string
+        - name: code
+          in: formData
+          description: email收到的验证码
+          required: true
+          type: string
+        - name: password
+          in: formData
+          description: password
+          required: true
+          type: string
+        - name: license
+          in: formData
+          description: password
+          required: true
+          type: string
+      responses:
+        "200":
+          description: A 200 reponse
+        default:
+          description: unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+  /resetPsw:
+    post:
+      summary: user reset password
+      consumes:
+        - multipart/form-data
+      operationId: userResetPassword
+      tags:
+        - user
+      parameters:
+        - name: email
+          in: formData
+          description: email
+          required: true
+          type: string
+        - name: code
+          in: formData
+          description: 邮箱收到的验证码
+          required: true
+          type: string
+        - name: newPassword
+          in: formData
+          description: new password
+          required: true
+          type: string
+      responses:
+        "200":
+          description: A 200 reponse
+        default:
+          description: unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+  /sendEmailCode:
+    post:
+      summary: user send email code
+      consumes:
+        - multipart/form-data
+      operationId: userSendEmailCode
+      tags:
+        - user
+      parameters:
+        - name: email
+          in: formData
+          description: email
+          required: true
+          type: string
+      responses:
+        "200":
+          description: A 200 reponse
+        default:
+          description: unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+  /content/news:
+    get:
+      summary: List news
+      operationId: listNews
+      tags:
+        - news
+      parameters:
+        - name: page
+          in: query
+          description: page
+          required: false
+          type: integer
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+        - name: type
+          in: query
+          description: type of news(政策新闻policy, 科研动态tech, 活动新闻 activity,国家政策county, 地区政策region, 学校政策school)
+          required: false
+          type: string
+        - name: orders
+          in: query
+          description: sort option of list(clicks)
+          required: false
+          type: string
+        - name: title
+          in: query
+          description: keywords to search
+          required: false
+          type: string
+      responses:
+        "200":
+          description: A 200 reponse
+        default:
+          description: unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+
+  /content/news/{id}:
+    get:
+      summary: get news by id
+      operationId: getNews
+      tags:
+        - news
+      parameters:
+        - name: id
+          in: path
+          description: news id
+          required: true
+          type: integer
+      responses:
+        "200":
+          description: A 200 reponse
+        default:
+          description: unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+
+  /content/transfer:
+    get:
+      summary: List transfer
+      operationId: listTransfer
+      tags:
+        - transfer
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+        - name: page
+          in: query
+          description: offset
+          required: false
+          type: integer
+        - name: industry
+          in: query
+          description: 行业领域
+          required: false
+          type: string
+        - name: method
+          in: query
+          description: 合作方式
+          required: false
+          type: string
+        - name: region
+          in: query
+          description: 地区
+          required: false
+          type: string
+        - name: orders
+          in: query
+          description: sort option of list(clicks)
+          required: false
+          type: string
+        - name: title
+          in: query
+          description: keywords to search
+          required: false
+          type: string
+      responses:
+        "200":
+          description: A 200 reponse
+        default:
+          description: unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+  /content/transfer/{id}:
+    get:
+      summary: get transfer info by id
+      operationId: getTransfer
+      tags:
+        - transfer
+      parameters:
+        - name: id
+          in: path
+          description: transfer id
+          required: true
+          type: integer
+      responses:
+        "200":
+          description: A 200 reponse
+        default:
+          description: unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+
+  /content/requires:
+    get:
+      summary: List require
+      operationId: listRequires
+      tags:
+        - requires
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+        - name: page
+          in: query
+          description: offset
+          required: false
+          type: integer
+        - name: industry
+          in: query
+          description: 行业领域
+          required: false
+          type: string
+        - name: method
+          in: query
+          description: 合作方式
+          required: false
+          type: string
+        - name: region
+          in: query
+          description: 地区
+          required: false
+          type: string
+        - name: orders
+          in: query
+          description: sort option of list(clicks)
+          required: false
+          type: string
+        - name: title
+          in: query
+          description: keywords to search
+          required: false
+          type: string
+      responses:
+        "200":
+          description: A 200 reponse
+        default:
+          description: unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+  /content/requires/{id}:
+    get:
+      summary: get require info by id
+      operationId: getRequire
+      tags:
+        - requires
+      parameters:
+        - name: id
+          in: path
+          description: require id
+          required: true
+          type: integer
+      responses:
+        "200":
+          description: A 200 reponse
+        default:
+          description: unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+
+  /content/achieves:
+    get:
+      summary: List achieves
+      operationId: listAchieves
+      tags:
+        - achieves
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+        - name: page
+          in: query
+          description: offset
+          required: false
+          type: integer
+        - name: industry
+          in: query
+          description: 行业领域
+          required: false
+          type: string
+        - name: method
+          in: query
+          description: 合作方式
+          required: false
+          type: string
+        - name: region
+          in: query
+          description: 地区
+          required: false
+          type: string
+        - name: patentType
+          in: query
+          description: 地区
+          required: false
+          type: string
+        - name: orders
+          in: query
+          description: sort option of list(clicks)
+          required: false
+          type: string
+        - name: title
+          in: query
+          description: keywords to search
+          required: false
+          type: string
+      responses:
+        "200":
+          description: A 200 reponse
+        default:
+          description: unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+  /content/achieves/{id}:
+    get:
+      summary: get achieves info by id
+      operationId: getAchieve
+      tags:
+        - achieves
+      parameters:
+        - name: id
+          in: path
+          description: achieves id
+          required: true
+          type: integer
+      responses:
+        "200":
+          description: A 200 reponse
+        default:
+          description: unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+
+  /sign/addAchieveComments:
+    post:
+      summary: post achieve comment
+      consumes:
+        - multipart/form-data
+      operationId: postAchieveComment
+      tags:
+        - comments
+      parameters:
+        - name: achieveId
+          in: formData
+          description: achieve id to comment
+          required: true
+          type: string
+        - name: comments
+          in: formData
+          description: comments content
+          required: true
+          type: string
+        - name: access_token
+          in: formData
+          description: user token
+          required: false
+          type: string
+        - name: code
+          in: formData
+          description: captcha code
+          required: false
+          type: string
+      responses:
+        "200":
+          description: A 200 reponse
+        default:
+          description: unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+
+  /sign/addRequireComments:
+    post:
+      summary: post require comment
+      consumes:
+        - multipart/form-data
+      operationId: postRequireComment
+      tags:
+        - comments
+      parameters:
+        - name: requireId
+          in: formData
+          description: require id to comment
+          required: true
+          type: string
+        - name: comments
+          in: formData
+          description: comments content
+          required: true
+          type: string
+        - name: access_token
+          in: formData
+          description: user token
+          required: false
+          type: string
+        - name: name
+          in: formData
+          description: name
+          required: true
+          type: string
+        - name: phone
+          in: formData
+          description: phone
+          required: true
+          type: string
+        - name: email
+          in: formData
+          description: email
+          required: true
+          type: string
+        - name: address
+          in: formData
+          description: address
+          required: true
+          type: string
+        - name: code
+          in: formData
+          description: captcha code
+          required: false
+          type: string
+      responses:
+        "200":
+          description: A 200 reponse
+        default:
+          description: unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+
+  /addWebComments:
+    post:
+      summary: post web comment
+      consumes:
+        - multipart/form-data
+      operationId: postWebComment
+      tags:
+        - comments
+      parameters:
+        - name: comments
+          in: formData
+          description: comments content
+          required: true
+          type: string
+        - name: token
+          in: formData
+          description: user token
+          required: false
+          type: string
+        - name: name
+          in: formData
+          description: name
+          required: true
+          type: string
+        - name: phone
+          in: formData
+          description: phone
+          required: true
+          type: string
+        - name: email
+          in: formData
+          description: email
+          required: true
+          type: string
+        - name: code
+          in: formData
+          description: captcha code
+          required: true
+          type: string
+      responses:
+        "200":
+          description: A 200 reponse
+        default:
+          description: unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+
+  /dict/listAllDict:
+    get:
+      summary: list dict info from backend
+      operationId: listAllDict
+      tags:
+        - web
+      responses:
+        "200":
+          description: A 200 reponse
+        default:
+          description: unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+  /cat/listAllCategory:
+    get:
+      summary: list category info from backend
+      operationId: listAllCategory
+      tags:
+        - web
+      responses:
+        "200":
+          description: A 200 reponse
+        default:
+          description: unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+  /linkList:
+    get:
+      summary: get home page Friends Links
+      operationId: getFriendsLinks
+      tags:
+        - web
+      responses:
+        "200":
+          description: A 200 reponse
+        default:
+          description: unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+  /pageList:
+    get:
+      summary: get home page carousel News info
+      operationId: getCarouselNewsInfo
+      tags:
+        - web
+      responses:
+        "200":
+          description: A 200 reponse
+        default:
+          description: unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+  /contentRecommendList:
+    get:
+      summary: get home page recommend News info
+      operationId: getRecommendNewsInfo
+      tags:
+        - web
+      responses:
+        "200":
+          description: A 200 reponse
+        default:
+          description: unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+#   /admin/shipEngineData/listNewBYSEId:
+#     get:
+#       summary: get ship engine data
+#       operationId: getShipEngineData
+#       tags:
+#         - shipEngineData
+#       parameters:
+#         - name: shipEngineId
+#           in: query
+#           description: ship Engine Id
+#           required: false
+#           type: string
+#       responses:
+#         "200":
+#           description: A 200 reponse
+#         default:
+#           description: unexpected error
+#           schema:
+#             $ref: "#/definitions/Error"
+
+#   /admin/shipType/list:
+#     get:
+#       summary: List ship types
+#       operationId: listShipType
+#       tags:
+#         - shipType
+#       parameters:
+#         - name: page
+#           in: query
+#           description: table page number
+#           required: false
+#           type: integer
+#         - name: limit
+#           in: query
+#           description: How many items to return at one time (max 100)
+#           required: false
+#           type: integer
+#         - name: shipTypeName
+#           in: query
+#           description: ship type name (or part of)
+#           required: false
+#           type: string
+#       responses:
+#         "200":
+#           description: A 200 reponse
+#         default:
+#           description: unexpected error
+#           schema:
+#             $ref: "#/definitions/Error"
+
+#   /admin/shipType/update:
+#     post:
+#       summary: update ship types
+#       operationId: updateShipType
+#       tags:
+#         - shipType
+#       parameters:
+#         - in: body
+#           name: body
+#           description: ship type info(shiptypeId is required)
+#           required: true
+#           schema:
+#             $ref: "#/definitions/ShipType"
+#       responses:
+#         "200":
+#           description: A 200 reponse
+#         default:
+#           description: unexpected error
+#           schema:
+#             $ref: "#/definitions/Error"
+
+#   /admin/shipType/add:
+#     post:
+#       summary: add a ship type
+#       operationId: addShipType
+#       tags:
+#         - shipType
+#       parameters:
+#         - in: body
+#           name: body
+#           description: ship type info to add
+#           required: true
+#           schema:
+#             $ref: "#/definitions/ShipTypeInfo"
+#       responses:
+#         "200":
+#           description: A 200 reponse
+#         default:
+#           description: unexpected error
+#           schema:
+#             $ref: "#/definitions/Error"
+
+#   /admin/shipType/delete:
+#     post:
+#       summary: delete a ship type
+#       operationId: deleteShipType
+#       tags:
+#         - shipType
+#       parameters:
+#         - in: body
+#           name: body
+#           description: ship type id info(ship type id is required)
+#           required: true
+#           schema:
+#             type: object
+#             required:
+#               - shipTypeId
+#             properties:
+#               shipTypeId:
+#                 type: integer
+#       responses:
+#         "200":
+#           description: A 200 reponse
+#         default:
+#           description: unexpected error
+#           schema:
+#             $ref: "#/definitions/Error"
+#   /admin/shipType/{shipTypeId}:
+#     get:
+#       summary: get a ship type info by id
+#       operationId: getShipType
+#       tags:
+#         - shipType
+#       parameters:
+#         - name: shipTypeId
+#           in: path
+#           description: ship type id
+#           required: true
+#           type: integer
+#       responses:
+#         "200":
+#           description: A 200 reponse
+#         default:
+#           description: unexpected error
+#           schema:
+#             $ref: "#/definitions/Error"
+
+#   /admin/warning/list:
+#     get:
+#       summary: List ship warning
+#       operationId: listWarning
+#       tags:
+#         - warning
+#       parameters:
+#         - name: page
+#           in: query
+#           description: table page number
+#           required: false
+#           type: integer
+#         - name: limit
+#           in: query
+#           description: How many items to return at one time (max 100)
+#           required: false
+#           type: integer
+#       responses:
+#         "200":
+#           description: A 200 reponse
+#         default:
+#           description: unexpected error
+#           schema:
+#             $ref: "#/definitions/Error"
+
+definitions:
+  #   ShipType:
+  #     type: object
+  #     required:
+  #       - shipTypeId
+  #     properties:
+  #       shipTypeId:
+  #         type: integer
+  #       shipTypeName:
+  #         type: string
+  #       comments:
+  #         type: string
+  #   ShipTypeInfo:
+  #     type: object
+  #     required:
+  #       - shipTypeName
+  #     properties:
+  #       shipTypeName:
+  #         type: string
+  #       comments:
+  #         type: string
+  Error:
+    type: "object"
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
