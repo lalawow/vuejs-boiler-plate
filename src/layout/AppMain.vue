@@ -1,14 +1,10 @@
 <template>
-  <section class="app-main">
-    <div class="q-button">
-      <q-button />
-    </div>
-    <router-view :key="key" />
-  </section>
+ <section class="app-main">
+  <router-view :key="key" />
+ </section>
 </template>
 
 <script>
-import QButton from "@/components/QButton";
 export default {
   name: "AppMain",
   computed: {
@@ -19,7 +15,7 @@ export default {
       return this.$route.path !== "/home";
     }
   },
-  components: { QButton }
+  components: {}
 };
 </script>
 

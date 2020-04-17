@@ -1,55 +1,48 @@
 <template>
-  <div class="links-div">
-    <div class="links-frame">
-      <div class="links-inner-frame">
-        <div class="top-links" v-if="withLinks">
-          <div class="top-links-title">友情链接</div>
-          <div class="links-btns">
-            <a v-for="(link,index) in friendLinks" :key="index" class="link-btn" :href="link.url" target="_blank">{{link.title}}</a>
-          </div>
-        </div>
-        <div class="bottom-links">
-          <div class="bottom-logo">
-            <img src="/images/bottom-logo.png" />
-          </div>
-          <div class="menu-links">
-            <div v-for="group in menus" class="menu-group" :key="group.name">
-              <div class="group-title">
-                <router-link :to="group.path">{{group.meta.title}}</router-link>
-              </div>
-              <div class="group-children">
-                <div v-for="child in group.children" :key="child.name" class="group-child">
-                  <router-link :to="{name:child.name}">{{child.meta.title}}</router-link>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="qr-img">
-            <div>
-              <img src="/images/qr.png" />
-            </div>
-            <div class="qr-txt">公众号</div>
-          </div>
-        </div>
-      </div>
+ <div class="links-div">
+  <div class="links-frame">
+   <div class="links-inner-frame">
+    <div class="top-links" v-if="withLinks">
+     <div class="top-links-title">友情链接</div>
+     <div class="links-btns">
+      <a v-for="(link,index) in friendLinks" :key="index" class="link-btn" :href="link.url" target="_blank">{{link.title}}</a>
+     </div>
     </div>
+    <div class="bottom-links">
+     <div class="bottom-logo">
+      <img src="/images/bottom-logo.png" />
+     </div>
+     <div class="menu-links">
+      <div v-for="group in menus" class="menu-group" :key="group.name">
+       <div class="group-title">
+        <router-link :to="group.path">{{group.meta.title}}</router-link>
+       </div>
+       <div class="group-children">
+        <div v-for="child in group.children" :key="child.name" class="group-child">
+         <router-link :to="{name:child.name}">{{child.meta.title}}</router-link>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="qr-img">
+      <div>
+       <img src="/images/qr.png" />
+      </div>
+      <div class="qr-txt">公众号</div>
+     </div>
+    </div>
+   </div>
   </div>
+ </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import collaboration from "@/router/collaboration";
-import policy from "@/router/policy";
-import activity from "@/router/activity";
-import transfer from "@/router/transfer";
-import aboutus from "@/router/aboutus";
-console.log("about", aboutus);
-const menus = [collaboration, policy, activity, transfer, aboutus].map(
-  group => ({
-    ...group,
-    children: (group.children || []).filter(c => c.meta && c.meta.topMenu)
-  })
-);
+
+const menus = [].map(group => ({
+  ...group,
+  children: (group.children || []).filter(c => c.meta && c.meta.topMenu)
+}));
 export default {
   data() {
     return {

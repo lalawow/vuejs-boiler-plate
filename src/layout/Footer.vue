@@ -1,5 +1,5 @@
 <template>
-  <div class="footer-container">Copyright 2019 © 湖北工业大学 版权所有 地址：湖北省武汉市洪山区南李路28号 邮编：430068</div>
+ <div class="footer-container">Copyright 2019 © 科学技术大学 版权所有 地址：湖北省武汉市 邮编：430068</div>
 </template>
 
 

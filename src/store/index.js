@@ -6,11 +6,6 @@ import Vuex from "vuex";
 import user from "./modules/user";
 import common from "./modules/common"
 import home from "./modules/home"
-import policy from "./modules/policy"
-import transfer from "./modules/transfer"
-import collaborations from "./modules/collaborations/index"
-import mix from "./modules/mix"
-import aboutus from "./modules/aboutus"
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
@@ -20,11 +15,6 @@ const store = new Vuex.Store({
     user,
     common,
     home,
-    policy,
-    transfer,
-    collaborations,
-    mix,
-    aboutus
   },
   // getters
 });

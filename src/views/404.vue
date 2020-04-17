@@ -1,16 +1,14 @@
 <template>
-  <div class="nf-container full-width">
-    <group-banner bg-img="/images/zcfg.png" text="404" />
-    <div class="center-container">
-      <div class="nf-main">本地址页面不存在</div>
-    </div>
+ <div class="nf-container full-width">
+  <div class="center-container">
+   <div class="nf-main">本地址页面不存在</div>
   </div>
+ </div>
 </template>
 
 <script>
-import GroupBanner from "@/components/GroupBanner";
 export default {
-  components: { GroupBanner }
+  components: {}
 };
 </script>
 
