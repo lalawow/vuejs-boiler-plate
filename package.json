@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@chenfengyuan/vue-carousel": "^1.0.2",
-    "axios": "0.18.1",
+    "axios": "0.21.1",
     "echarts": "^4.4.0",
     "element-ui": "^2.13.0",
     "js-cookie": "2.2.0",
